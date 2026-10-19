@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jornada Opimed | Protótipo</title>
+  <meta name="description" content="Protótipo de novas funcionalidades para o site da Opimed, inspiradas na rede Aural: método de atendimento, teste auditivo online, plano de cuidado contínuo, busca de unidades e retorno por telefone.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#252021">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="jornada.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9" r="2.6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-ear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5S14 18 12.5 19.5 8 20 8 17"/><path d="M9.5 9.5a2.5 2.5 0 1 1 5 0c0 1.5-1.5 2-1.5 3"/></symbol>
+    <symbol id="i-locate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.6v12.8a1 1 0 0 0 1.5.86l10.2-6.4a1 1 0 0 0 0-1.72L9.5 4.74A1 1 0 0 0 8 5.6Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-whats" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></symbol>
+  </svg>
+
+  <div class="proto-bar">Protótipo para aprovação · ideias adaptadas da rede Aural (Espanha) · <a href="../">voltar à apresentação</a></div>
+
+  <!-- Barra utilitária: os 3 atalhos que a Aural mantém sempre no topo -->
+  <div class="util">
+    <div class="container util__inner">
+      <a href="#unidades" class="util__first"><svg aria-hidden="true"><use href="#i-pin"/></svg>Encontre sua unidade</a>
+      <a href="#agendar"><svg aria-hidden="true"><use href="#i-cal"/></svg>Agendar avaliação</a>
+      <a href="#teste-online"><svg aria-hidden="true"><use href="#i-ear"/></svg>Teste auditivo online</a>
+      <a href="tel:08001001989" class="util__tel"><svg aria-hidden="true"><use href="#i-phone"/></svg>0800 100 1989</a>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#topo" class="logo"><img src="../assets/img/logo-opimed.webp" alt="Opimed desde 1989" width="2048" height="1024"></a>
+      <nav class="nav" aria-label="Seções">
+        <a href="#metodo">Método Opimed</a>
+        <a href="#teste-online">Teste online</a>
+        <a href="#plano">Plano Opimed+</a>
+        <a href="#unidades">Unidades</a>
+      </nav>
+      <button class="btn btn--sm" data-open-callback>Nós ligamos para você</button>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="kicker kicker--light">Opimed, desde 1989</span>
+          <h1 class="h1">A vida soa melhor quando você é <em>acompanhado</em> de perto.</h1>
+          <p class="lead">Mais do que vender aparelhos auditivos: um caminho de cuidado, do primeiro "como?" ao acompanhamento de todos os anos seguintes.</p>
+          <div class="cta-group">
+            <a href="#agendar" class="btn btn--lg btn--light">Agendar avaliação <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="#teste-online" class="btn btn--lg btn--ghost-light">Fazer teste online em 3 min</a>
+          </div>
+        </div>
+        <ul class="hero__stats">
+          <li><strong>35+</strong><span>anos cuidando da audição</span></li>
+          <li><strong>60 mil</strong><span>pacientes atendidos</span></li>
+          <li><strong>102 mil</strong><span>aparelhos adaptados</span></li>
+          <li><strong>18</strong><span>unidades em 9 estados</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 1. MÉTODO ================= -->
+    <section class="section" id="metodo">
+      <div class="container">
+        <div class="idea-tag reveal">Ideia 1 · inspirada no "Camino Aural®"</div>
+        <div class="head reveal">
+          <span class="kicker">Método Opimed</span>
+          <h2 class="h2">Seis passos para você ouvir bem, <em>sem pressa</em> e sem pressão</h2>
+          <p class="body">Um protocolo de atendimento com nome próprio, igual em todas as unidades. Mostra o cuidado da Opimed e tira o medo da "visita para comprar aparelho".</p>
+        </div>
+        <ol class="steps-line">
+          <li class="reveal"><span>1</span><h3 class="h3">Acolhimento</h3><p>Você é recebido sem pressa, por quem entende de audição.</p></li>
+          <li class="reveal"><span>2</span><h3 class="h3">Escuta</h3><p>Entendemos sua rotina e as situações em que mais sente dificuldade.</p></li>
+          <li class="reveal"><span>3</span><h3 class="h3">Avaliação auditiva</h3><p>Exames com fonoaudiólogo e equipamentos de ponta.</p></li>
+          <li class="reveal"><span>4</span><h3 class="h3">Plano sob medida</h3><p>Indicamos as opções que fazem sentido para você, entre Widex, Signia e ReSound.</p></li>
+          <li class="reveal"><span>5</span><h3 class="h3">Você experimenta e decide</h3><p>Teste o aparelho no seu dia a dia antes de decidir.</p></li>
+          <li class="reveal"><span>6</span><h3 class="h3">Acompanhamento contínuo</h3><p>Revisões, ajustes e assistência. O cuidado não termina na compra.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= 2. TESTE ONLINE ================= -->
+    <section class="section section--soft" id="teste-online">
+      <div class="container quiz-wrap">
+        <div>
+          <div class="idea-tag reveal">Ideia 2 · inspirada no "Test auditivo online"</div>
+          <div class="head reveal">
+            <span class="kicker">Teste auditivo online</span>
+            <h2 class="h2">Será que está na hora de cuidar da sua audição?</h2>
+            <p class="body">Oito perguntas rápidas sobre o seu dia a dia. Em 3 minutos você sabe se vale a pena fazer uma avaliação. Hoje o site da Opimed leva a um guia em texto; aqui o teste vira uma porta de entrada de contatos.</p>
+          </div>
+          <p class="small reveal">Complementa o <a href="../teste-de-som/">teste de preferência sonora</a>: este identifica sinais de perda auditiva; aquele ajuda a escolher o som do aparelho.</p>
+        </div>
+
+        <div class="quiz" data-quiz aria-live="polite">
+          <div class="quiz__bar"><span data-quiz-bar></span></div>
+          <div class="quiz__body" data-quiz-body></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. EXPERIMENTE ================= -->
+    <section class="section" id="experimente">
+      <div class="container">
+        <div class="idea-tag reveal">Ideia 3 · inspirada em "Prueba gratuita 15 días"</div>
+        <div class="trial reveal">
+          <div>
+            <span class="kicker kicker--light">Experimente antes de decidir</span>
+            <h2 class="h2">Leve o aparelho para casa por <em>[X] dias</em>. Se não gostar, devolve.</h2>
+            <p class="body">Uma garantia simples e clara reduz o maior medo de quem nunca usou aparelho: gastar e não se adaptar.</p>
+          </div>
+          <ul class="trial__list">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Teste no restaurante, na TV e nas conversas de família</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Ajustes com o fonoaudiólogo durante o período</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Garantia de satisfação: condições a definir pela Opimed</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. PLANO ================= -->
+    <section class="section section--soft" id="plano">
+      <div class="container">
+        <div class="idea-tag idea-tag--center reveal">Ideia 4 · inspirada no "Aural Plus"</div>
+        <div class="head head--center reveal">
+          <span class="kicker">Plano Opimed+</span>
+          <h2 class="h2">Sua audição em dia, numa mensalidade só</h2>
+          <p class="body">Um plano de cuidado contínuo: aparelho, manutenção, seguro e atualização de tecnologia, sem sustos. Fideliza o paciente e cria receita recorrente.</p>
+        </div>
+        <div class="plans">
+          <article class="plan reveal">
+            <h3 class="h3">Compra tradicional</h3>
+            <p class="plan__price">Pagamento único<small>ou parcelado</small></p>
+            <ul>
+              <li class="yes">Aparelho auditivo</li>
+              <li class="yes">Garantia de fábrica e Garantia Premium Opimed</li>
+              <li class="no">Revisões e limpezas pagas à parte</li>
+              <li class="no">Perda ou roubo não cobertos</li>
+              <li class="no">Nova compra integral para trocar de tecnologia</li>
+            </ul>
+          </article>
+          <article class="plan plan--featured reveal">
+            <span class="plan__flag">Proposta</span>
+            <h3 class="h3">Plano Opimed+</h3>
+            <p class="plan__price">R$ [valor]<small>/mês · valores a definir</small></p>
+            <ul>
+              <li class="yes">Aparelho com tecnologia atual</li>
+              <li class="yes">Atendimento preferencial na unidade</li>
+              <li class="yes">Revisão e limpeza a cada 6 meses</li>
+              <li class="yes">Cobertura contra quebra, perda e roubo</li>
+              <li class="yes">Reparo expresso e suporte remoto</li>
+              <li class="yes">Troca de tecnologia a cada 3 anos com desconto</li>
+            </ul>
+            <a href="#agendar" class="btn btn--block">Quero conhecer o plano</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. UNIDADES ================= -->
+    <section class="section" id="unidades">
+      <div class="container">
+        <div class="idea-tag reveal">Ideia 5 · inspirada em "Encuentra tu centro"</div>
+        <div class="units-head reveal">
+          <div class="head">
+            <span class="kicker">Unidades Opimed</span>
+            <h2 class="h2">Encontre a unidade mais perto de você</h2>
+            <p class="body">Hoje as 18 unidades aparecem em lista corrida. Com filtro e localização, o paciente chega mais rápido ao telefone, à rota ou ao agendamento.</p>
+          </div>
+          <div class="units-tools">
+            <button class="btn btn--outline" data-locate><svg aria-hidden="true"><use href="#i-locate"/></svg>Usar minha localização</button>
+            <select class="select" data-state aria-label="Filtrar por estado"><option value="">Todos os estados</option></select>
+          </div>
+        </div>
+        <p class="small units-status" data-units-status></p>
+        <div class="units" data-units></div>
+      </div>
+    </section>
+
+    <!-- ================= 6. HISTÓRIAS ================= -->
+    <section class="section section--dark" id="historias">
+      <div class="container">
+        <div class="idea-tag idea-tag--dark reveal">Ideia 6 · inspirada nos vídeos de pacientes, videopodcast e "lucha contra el estigma"</div>
+        <div class="head reveal">
+          <span class="kicker">Histórias que voltaram a soar</span>
+          <h2 class="h2">Pacientes reais contando o que mudou</h2>
+          <p class="body">Vídeos curtos de pacientes e conteúdo que tira o peso do aparelho auditivo. A Aural tem até um videopodcast e uma campanha contra o estigma; a Opimed pode começar com uma série de depoimentos por unidade.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="story reveal"><div class="story__thumb"><span><svg><use href="#i-play"/></svg></span></div><h3 class="h3">"Voltei a ouvir meus netos"</h3><p class="body">Depoimento de paciente · 1 min</p></article>
+          <article class="story reveal"><div class="story__thumb"><span><svg><use href="#i-play"/></svg></span></div><h3 class="h3">Como é feita a moldagem do ouvido</h3><p class="body">Bastidores do laboratório · 2 min</p></article>
+          <article class="story reveal"><div class="story__thumb"><span><svg><use href="#i-play"/></svg></span></div><h3 class="h3">Viajar com o carregador do aparelho</h3><p class="body">Dica prática · 1 min</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AGENDAR ================= -->
+    <section class="section" id="agendar">
+      <div class="container book">
+        <div>
+          <div class="idea-tag reveal">Ideia 7 · inspirada em "Te llamamos"</div>
+          <span class="kicker">Fale com a Opimed</span>
+          <h2 class="h2">Do jeito que for mais fácil para você</h2>
+          <p class="body">Além do WhatsApp, a opção "nós ligamos para você" atende quem não gosta de digitar ou prefere conversar. O formulário pergunta o melhor horário.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact" href="https://tintim.link/whatsapp/7c349cb9-c7e6-42a9-8469-b6271b6bdefa/78512ba2-2c3b-47da-89f4-48d40d353413" target="_blank" rel="noopener"><span class="contact__ico contact__ico--wa"><svg><use href="#i-whats"/></svg></span><strong>WhatsApp</strong><small>Resposta rápida</small></a>
+          <button class="contact" data-open-callback><span class="contact__ico"><svg><use href="#i-phone"/></svg></span><strong>Nós ligamos</strong><small>Escolha o horário</small></button>
+          <a class="contact" href="#unidades"><span class="contact__ico"><svg><use href="#i-pin"/></svg></span><strong>Unidades</strong><small>Endereços e telefones</small></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <img src="../assets/img/logo-opimed.webp" alt="Opimed" width="2048" height="1024">
+      <span>Protótipo 3ADS para aprovação · textos, valores e condições a definir com a Opimed</span>
+    </div>
+  </footer>
+
+  <!-- Botão fixo + painel "Nós ligamos para você" -->
+  <button class="callback-fab" data-open-callback><svg aria-hidden="true"><use href="#i-phone"/></svg>Nós ligamos para você</button>
+  <div class="drawer" data-drawer hidden>
+    <div class="drawer__bg" data-close-callback></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cb-title">
+      <button class="drawer__close" data-close-callback aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
+      <div data-cb-form-wrap>
+        <h2 class="h3" id="cb-title">Um especialista liga para você</h2>
+        <p class="small">Deixe seu telefone e o melhor horário. Ligamos sem compromisso.</p>
+        <form class="cb-form" data-cb-form>
+          <div class="field"><label for="cb-nome">Nome</label><input class="input" id="cb-nome" name="nome" required autocomplete="given-name"></div>
+          <div class="field"><label for="cb-tel">Telefone</label><input class="input" id="cb-tel" name="tel" type="tel" inputmode="tel" required autocomplete="tel" placeholder="(62) 90000-0000"></div>
+          <fieldset class="field cb-turno">
+            <legend>Melhor horário</legend>
+            <label><input type="radio" name="turno" value="manhã" checked><span>Manhã</span></label>
+            <label><input type="radio" name="turno" value="tarde"><span>Tarde</span></label>
+          </fieldset>
+          <label class="check"><input type="checkbox" required> Autorizo a Opimed a entrar em contato.</label>
+          <button class="btn btn--lg btn--block" type="submit">Quero receber a ligação</button>
+          <p class="small">Protótipo: nenhum dado é enviado.</p>
+        </form>
+      </div>
+      <div class="cb-done" data-cb-done hidden>
+        <span class="cb-done__ico"><svg><use href="#i-check"/></svg></span>
+        <h2 class="h3" data-cb-done-title>Combinado!</h2>
+        <p class="body" data-cb-done-text></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="jornada.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Novas ideias para a Opimed | 3ADS</title>
+  <meta name="description" content="Análise da rede Aural e da ferramenta Sound Preference, com ideias adaptadas e protótipos navegáveis para a Opimed aprovar.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#252021">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <style>
+    .cover { background: radial-gradient(900px 500px at 90% 0%, rgba(var(--glow), .22), transparent 60%), var(--ink); color: #fff; padding: 88px 0 72px; }
+    .cover .lead { color: rgba(255, 255, 255, .76); margin-top: 20px; max-width: 680px; }
+    .proto-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+    .proto-card {
+      display: grid; gap: 8px; padding: 26px; border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14);
+      text-decoration: none; color: #fff; transition: background .25s, transform .25s var(--ease), border-color .25s;
+    }
+    .proto-card:hover { background: rgba(255, 255, 255, .1); border-color: var(--accent); transform: translateY(-3px); }
+    .proto-card small { color: var(--accent); font-weight: 700; font-size: 12px; letter-spacing: .03em; }
+    .proto-card strong { font-size: 21px; font-weight: 600; }
+    .proto-card span { color: rgba(255, 255, 255, .7); font-size: 14.5px; }
+    .proto-card em { font-style: normal; font-weight: 700; font-size: 14px; margin-top: 8px; display: inline-flex; gap: 8px; align-items: center; }
+    .proto-card svg { width: 18px; height: 18px; }
+
+    .ref { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 56px; }
+    .ref__meta { display: grid; gap: 14px; align-content: start; }
+    .facts { list-style: none; display: grid; gap: 10px; }
+    .facts li { padding: 14px 16px; border-radius: var(--radius-sm); background: var(--soft); font-size: 14.5px; color: var(--t2); line-height: 1.5; }
+    .facts strong { color: var(--ink); }
+    .section--soft .facts li { background: #fff; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+    th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.5; }
+    th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--t3); background: var(--soft); font-weight: 700; }
+    tr:last-child td { border-bottom: 0; }
+    td:first-child { font-weight: 700; color: var(--ink); width: 22%; }
+    td { color: var(--t2); }
+    .lvl { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: var(--pill); white-space: nowrap; }
+    .lvl--a { background: #e3f1e8; color: #2f7a4f; }
+    .lvl--m { background: #fbf0dc; color: #8a5a12; }
+    .lvl--b { background: #f7e3e0; color: #9c3427; }
+    .proto-link { font-weight: 700; color: var(--ink); white-space: nowrap; }
+
+    .flow { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; counter-reset: f; }
+    .flow li { counter-increment: f; padding: 16px; border-radius: var(--radius-sm); background: #fff; border: 1px solid var(--line); font-size: 13.5px; color: var(--t2); line-height: 1.45; }
+    .flow li::before { content: counter(f); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+    .flow strong { display: block; color: var(--ink); margin-bottom: 2px; }
+
+    .verdict { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; padding: 26px 28px; border-radius: var(--radius-md); background: #e3f1e8; margin-bottom: 28px; }
+    .verdict__ico { width: 52px; height: 52px; border-radius: 16px; background: #2f7a4f; color: #fff; display: grid; place-items: center; }
+    .verdict__ico svg { width: 26px; height: 26px; }
+    .verdict strong { font-size: 19px; display: block; margin-bottom: 4px; }
+    .verdict p { color: #2b4a38; font-size: 15px; }
+
+    .paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .path { padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--line); background: #fff; display: grid; gap: 10px; align-content: start; position: relative; }
+    .path--rec { border: 2px solid var(--ink); }
+    .path__flag { position: absolute; top: -12px; left: 22px; background: var(--accent); color: var(--ink); font-size: 11.5px; font-weight: 700; padding: 4px 11px; border-radius: var(--pill); }
+    .path h3 { font-size: 17px; }
+    .path p { font-size: 14px; color: var(--t2); line-height: 1.55; }
+    .pc { list-style: none; display: grid; gap: 6px; font-size: 13.5px; color: var(--t2); padding-top: 10px; border-top: 1px solid var(--line); }
+    .pc li { padding-left: 22px; position: relative; line-height: 1.45; }
+    .pc li::before { position: absolute; left: 0; font-weight: 700; }
+    .pc .p::before { content: "+"; color: #2f7a4f; }
+    .pc .c::before { content: "–"; color: #9c3427; }
+
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .cols .card h3 { margin-bottom: 12px; }
+    .bul { list-style: none; display: grid; gap: 10px; }
+    .bul li { position: relative; padding-left: 20px; font-size: 14.5px; color: var(--t2); line-height: 1.55; }
+    .bul li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    .bul strong { color: var(--ink); }
+
+    .decide { counter-reset: d; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .decide li { counter-increment: d; display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 18px 20px; border-radius: var(--radius-sm); background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); font-size: 14.5px; color: rgba(255, 255, 255, .78); line-height: 1.5; }
+    .decide li::before { content: counter(d); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--ink); font-weight: 700; }
+    .decide strong { color: #fff; display: block; }
+    .next { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 56px; }
+    .next div { border-top: 2px solid var(--accent); padding-top: 14px; font-size: 14px; color: rgba(255, 255, 255, .72); }
+    .next strong { display: block; color: #fff; font-size: 15px; margin-bottom: 4px; }
+
+    @media (max-width: 960px) {
+      .ref, .cols { grid-template-columns: 1fr; gap: 32px; }
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .paths { grid-template-columns: 1fr; gap: 22px; }
+      .next { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .cover { padding: 56px 0 48px; }
+      .proto-cards, .decide, .next { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .verdict { grid-template-columns: 1fr; }
+      .header .btn { display: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#topo" class="logo"><img src="assets/img/logo-opimed.webp" alt="Opimed desde 1989" width="2048" height="1024"></a>
+      <nav class="nav" aria-label="Seções">
+        <a href="#aural">Aural</a>
+        <a href="#sound">Teste de som</a>
+        <a href="#decidir">Para aprovar</a>
+      </nav>
+      <a href="#decidir" class="btn btn--sm">O que precisamos de vocês</a>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="cover">
+      <div class="container">
+        <span class="kicker kicker--light">3ADS · Análise de referências · Outubro 2026</span>
+        <h1 class="h1">Duas referências, <em>nove ideias</em> e dois protótipos para a Opimed aprovar</h1>
+        <p class="lead">Analisamos o site da rede Aural (Espanha) e o teste Sound Preference, que compara o som da Widex e da Signia. Aqui está o que cada um faz bem, como isso se adapta à Opimed e o que precisa ser decidido antes de implementar.</p>
+        <div class="proto-cards">
+          <a class="proto-card" href="teste-de-som/">
+            <small>PROTÓTIPO 1 · A PARTIR DO SOUND PREFERENCE</small>
+            <strong>Teste "Qual som combina com você?"</strong>
+            <span>LP com teste interativo: 4 cenas, Som A x Som B às cegas, perfil sonoro e agendamento. Use fones de ouvido.</span>
+            <em>Abrir protótipo <svg aria-hidden="true"><use href="#i-arrow"/></svg></em>
+          </a>
+          <a class="proto-card" href="jornada/">
+            <small>PROTÓTIPO 2 · A PARTIR DA AURAL</small>
+            <strong>Jornada Opimed</strong>
+            <span>Método de atendimento, teste auditivo online, plano de cuidado, busca de unidades e "nós ligamos para você".</span>
+            <em>Abrir protótipo <svg aria-hidden="true"><use href="#i-arrow"/></svg></em>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AURAL ================= -->
+    <section class="section" id="aural">
+      <div class="container">
+        <div class="ref">
+          <div class="ref__meta">
+            <span class="kicker">Referência 1 · aural.es</span>
+            <h2 class="h2">Aural: o site vende <em>cuidado</em>, não aparelho</h2>
+            <p class="body">Rede espanhola de centros auditivos com 60 anos, ligada à Widex. O site quase não fala de produto: fala de atendimento, acompanhamento e de tirar o medo de dar o primeiro passo.</p>
+          </div>
+          <ul class="facts">
+            <li><strong>Três atalhos fixos no topo</strong> em todas as páginas: encontrar centro, pedir consulta e teste auditivo online, além do telefone gratuito.</li>
+            <li><strong>Um método com nome registrado</strong> ("Camino Aural®"): 6 passos do acolhimento ao acompanhamento, que vira argumento de venda.</li>
+            <li><strong>Assinatura "Aural Plus"</strong>: aparelho, revisões semestrais, seguro contra perda e roubo, reparo expresso e desconto na renovação a cada 3 anos.</li>
+            <li><strong>Redução de risco</strong>: 15 dias de teste grátis e devolução do dinheiro em 30 dias.</li>
+            <li><strong>Várias portas de contato</strong>: agendar, ligar, "te ligamos" (escolhendo manhã ou tarde) e localizador de centros.</li>
+            <li><strong>Conteúdo humano</strong>: vídeos de pacientes, videopodcast, blog, atletas embaixadores e campanha contra o estigma da perda auditiva.</li>
+          </ul>
+        </div>
+
+        <div class="head" style="margin-top:72px">
+          <h3 class="h2" style="font-size:clamp(22px,2.2vw,28px)">O que adaptar para a Opimed</h3>
+          <p class="body">O site atual da Opimed já tem bons ativos: 35 anos de história, 60 mil pacientes, 102 mil aparelhos, Garantia Premium de até 5 anos e 18 unidades. Falta transformar isso em <strong>jornada</strong> e em <strong>portas de entrada</strong> para quem ainda não está pronto para agendar.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Ideia</th><th>O que é na Opimed</th><th>Impacto</th><th>Esforço</th><th>Depende da Opimed</th><th>Protótipo</th></tr></thead>
+            <tbody>
+              <tr><td>1. Método Opimed</td><td>Protocolo de atendimento em 6 passos com nome próprio, igual em todas as unidades.</td><td><span class="lvl lvl--m">Médio</span></td><td><span class="lvl lvl--a">Baixo</span></td><td>Nome e etapas reais do atendimento</td><td><a class="proto-link" href="jornada/#metodo">Ver</a></td></tr>
+              <tr><td>2. Teste auditivo online</td><td>8 perguntas em 3 minutos, resultado na hora e captação de contato. Substitui o guia em texto atual.</td><td><span class="lvl lvl--a">Alto</span></td><td><span class="lvl lvl--a">Baixo</span></td><td>Validação das perguntas pela fonoaudiologia</td><td><a class="proto-link" href="jornada/#teste-online">Ver</a></td></tr>
+              <tr><td>3. Experimente antes de decidir</td><td>Período de teste do aparelho em casa e garantia de satisfação.</td><td><span class="lvl lvl--a">Alto</span></td><td><span class="lvl lvl--a">Baixo</span> no site</td><td>Política comercial: prazo e condições</td><td><a class="proto-link" href="jornada/#experimente">Ver</a></td></tr>
+              <tr><td>4. Plano Opimed+</td><td>Assinatura mensal com aparelho, manutenção, seguro e troca de tecnologia.</td><td><span class="lvl lvl--a">Alto</span></td><td><span class="lvl lvl--b">Alto</span></td><td>Modelo de negócio, preço, seguradora, jurídico</td><td><a class="proto-link" href="jornada/#plano">Ver</a></td></tr>
+              <tr><td>5. Buscador de unidades</td><td>Filtro por estado e "usar minha localização", com ligar, rota e agendar em cada unidade.</td><td><span class="lvl lvl--m">Médio</span></td><td><span class="lvl lvl--a">Baixo</span></td><td>Conferir endereços, telefones e WhatsApp por unidade</td><td><a class="proto-link" href="jornada/#unidades">Ver</a></td></tr>
+              <tr><td>6. Histórias em vídeo</td><td>Depoimentos curtos de pacientes e bastidores (moldagem, laboratório).</td><td><span class="lvl lvl--m">Médio</span></td><td><span class="lvl lvl--m">Médio</span></td><td>Gravações e autorização de imagem</td><td><a class="proto-link" href="jornada/#historias">Ver</a></td></tr>
+              <tr><td>7. Nós ligamos para você</td><td>Botão fixo e formulário curto com melhor período. Bom para o público 60+, que prefere conversar.</td><td><span class="lvl lvl--a">Alto</span></td><td><span class="lvl lvl--a">Baixo</span></td><td>Quem retorna as ligações e em quanto tempo</td><td><a class="proto-link" href="jornada/#agendar">Ver</a></td></tr>
+              <tr><td>8. Barra de atalhos fixa</td><td>Unidade, agendar, teste online e 0800 sempre visíveis no topo.</td><td><span class="lvl lvl--m">Médio</span></td><td><span class="lvl lvl--a">Baixo</span></td><td>Nada</td><td><a class="proto-link" href="jornada/">Ver</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small" style="margin-top:14px">Também vimos na Aural, sem protótipo: campanha sazonal "revise sua audição e ganhe um brinde", selo "9 em cada 10 clientes recomendam" e linha infantil (Aural Kids). Podem entrar em campanhas de mídia.</p>
+      </div>
+    </section>
+
+    <!-- ================= SOUND PREFERENCE ================= -->
+    <section class="section section--soft" id="sound">
+      <div class="container">
+        <div class="ref">
+          <div class="ref__meta">
+            <span class="kicker">Referência 2 · soundpreference.net/br</span>
+            <h2 class="h2">Sound Preference: o paciente <em>ouve</em> antes de escolher</h2>
+            <p class="body">Ferramenta da WS Audiology, dona da Widex e da Signia. O paciente compara o "Som Natural" (Widex) e o "Som Aprimorado" (Signia) em cenas do dia a dia e descobre qual prefere.</p>
+          </div>
+          <ul class="facts">
+            <li><strong>Como funciona:</strong> fones de ouvido, ajuste de volume, 5 cenas (dirigindo, parque, cozinha, restaurante, piano) e uma pergunta de preferência geral.</li>
+            <li><strong>Em cada cena</strong> o áudio toca sem parar e o paciente alterna Som A e Som B na hora, depois diz qual prefere e o quanto (fraca, moderada, forte).</li>
+            <li><strong>Resultado:</strong> perfil Natural, Aprimorado ou equilibrado, resumo por cena e envio por e-mail. Não guarda dados e não capta contato.</li>
+            <li><strong>Tecnologia:</strong> app web (React) com textos e áudios em um CMS, mais de 10 idiomas, hospedagem Vercel. Cada cena tem dois arquivos de áudio gravados pelo fabricante.</li>
+          </ul>
+        </div>
+
+        <div class="head" style="margin-top:72px">
+          <h3 class="h2" style="font-size:clamp(22px,2.2vw,28px)">Como o fluxo ficou no protótipo da Opimed</h3>
+          <p class="body">Mantivemos a mecânica e acrescentamos o que a ferramenta original não faz: <strong>captar o contato</strong> e levar o paciente até uma unidade.</p>
+        </div>
+        <ol class="flow">
+          <li><strong>LP de entrada</strong>Promessa, como funciona e os dois perfis.</li>
+          <li><strong>Fones e volume</strong>Amostra de som e controle de volume.</li>
+          <li><strong>4 cenas A/B</strong>Restaurante, parque, cozinha e música. Lados sorteados a cada cena.</li>
+          <li><strong>Prioridade</strong>Fala no barulho, som natural ou os dois.</li>
+          <li><strong>Perfil sonoro</strong>Escala Natural ↔ Aprimorado, resumo e marcas indicadas.</li>
+          <li><strong>Agendamento</strong>Nome, WhatsApp e unidade para a experiência na loja.</li>
+        </ol>
+
+        <div class="head" style="margin-top:72px;margin-bottom:28px">
+          <span class="kicker">Viabilidade técnica</span>
+          <h3 class="h2" style="font-size:clamp(22px,2.2vw,28px)">Dá para fazer. O ponto crítico são os áudios.</h3>
+        </div>
+        <div class="verdict">
+          <span class="verdict__ico"><svg><use href="#i-check"/></svg></span>
+          <div><strong>Viável, com complexidade média</strong><p>Player A/B sincronizado, fluxo, pontuação, captação e integração com WhatsApp/CRM já funcionam no protótipo, em HTML e Web Audio, sem servidor. O que define a qualidade final é de onde vêm os sons de cada aparelho.</p></div>
+        </div>
+        <div class="paths">
+          <article class="path path--rec">
+            <span class="path__flag">Recomendado</span>
+            <h3 class="h3">A. Áudios oficiais do fabricante</h3>
+            <p>Pedir à WS Audiology (representação Widex e Signia no Brasil) autorização para usar os áudios do Sound Preference, ou uma versão da ferramenta com a marca Opimed.</p>
+            <ul class="pc"><li class="p">Som real dos aparelhos, já validado</li><li class="p">Menor custo de produção</li><li class="c">Depende do aceite do fabricante</li><li class="c">Só Widex x Signia, sem ReSound</li></ul>
+          </article>
+          <article class="path">
+            <h3 class="h3">B. Gravação própria</h3>
+            <p>Gravar as cenas em áudio binaural e regravar através dos aparelhos reais num manequim acústico, com fonoaudiólogo e estúdio.</p>
+            <ul class="pc"><li class="p">Conteúdo exclusivo da Opimed</li><li class="p">Pode incluir ReSound e outras marcas</li><li class="c">Custo de estúdio e equipamento</li><li class="c">Exige cuidado técnico na calibração</li></ul>
+          </article>
+          <article class="path">
+            <h3 class="h3">C. Simulação digital</h3>
+            <p>O que está no protótipo: as cenas são processadas no navegador em dois perfis (natural x foco na fala), sem gravar os aparelhos.</p>
+            <ul class="pc"><li class="p">Rápido e barato, pronto para testar campanha</li><li class="c">Não é o som real de cada marca</li><li class="c">Não pode prometer "assim soa a Widex/Signia"</li></ul>
+          </article>
+        </div>
+
+        <div class="cols" style="margin-top:40px">
+          <div class="card">
+            <h3 class="h3">Cuidados para a versão final</h3>
+            <ul class="bul">
+              <li><strong>Não é exame:</strong> deixar claro em toda a jornada que o teste indica preferência e não substitui a avaliação.</li>
+              <li><strong>Marcas:</strong> uso de nomes e associação perfil ↔ marca alinhados com os fabricantes.</li>
+              <li><strong>LGPD:</strong> consentimento no formulário e uso do resultado só para atendimento.</li>
+              <li><strong>Celular:</strong> funciona com fones com fio ou Bluetooth. No iPhone, o modo silencioso pode mutar o áudio da página: a versão final traz esse aviso na etapa de volume.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="h3">Onde usar</h3>
+            <ul class="bul">
+              <li><strong>Campanhas de mídia:</strong> "Descubra qual som combina com você" como isca de lead, mais leve que "agende uma consulta".</li>
+              <li><strong>Nas lojas:</strong> tablet e fone na recepção, antes da avaliação.</li>
+              <li><strong>Nas LPs de marca</strong> (Widex, Signia, ReSound): como bloco "ouça a diferença".</li>
+              <li><strong>Remarketing:</strong> quem fez o teste recebe conteúdo do seu perfil.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DECIDIR ================= -->
+    <section class="section section--dark" id="decidir">
+      <div class="container">
+        <div class="head">
+          <span class="kicker">Para aprovar</span>
+          <h2 class="h2">O que precisamos que a Opimed defina</h2>
+          <p class="body">Com estas respostas fechamos o escopo, a ordem de entrega e partimos para a implementação.</p>
+        </div>
+        <ol class="decide">
+          <li><span><strong>Quais ideias seguem e em que ordem</strong>Sugestão: teste auditivo online, "nós ligamos", buscador de unidades e barra de atalhos primeiro (alto impacto, baixo esforço).</span></li>
+          <li><span><strong>Áudios do teste de som</strong>Caminho A, B ou C. Se A, quem faz o contato com a WS Audiology.</span></li>
+          <li><span><strong>Perfis e marcas</strong>Se o resultado indica marcas e como a ReSound entra.</span></li>
+          <li><span><strong>Experiência na loja</strong>Se existe avaliação ou experiência gratuita, e o período de teste em casa.</span></li>
+          <li><span><strong>Plano de assinatura</strong>Se há interesse em estudar o Opimed+ (preço, coberturas, parceiro de seguro).</span></li>
+          <li><span><strong>Nome do método</strong>Etapas reais do atendimento e nome para o protocolo.</span></li>
+          <li><span><strong>Destino dos contatos</strong>WhatsApp por unidade, Tintim, CRM. Quem responde e em quanto tempo.</span></li>
+          <li><span><strong>Conteúdo</strong>Pacientes dispostos a gravar depoimento e autorização de imagem.</span></li>
+        </ol>
+        <div class="next">
+          <div><strong>1. Aprovação</strong>Opimed escolhe as ideias e responde os pontos acima.</div>
+          <div><strong>2. Escopo e cronograma</strong>3ADS detalha entregas e prazos por fase.</div>
+          <div><strong>3. Layout e copy</strong>Telas finais no padrão das LPs atuais.</div>
+          <div><strong>4. Implementação</strong>Desenvolvimento, integrações e testes.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <img src="assets/img/logo-opimed.webp" alt="Opimed" width="2048" height="1024">
+      <span>Material 3ADS para aprovação da Opimed · protótipos navegáveis, sem envio de dados</span>
+    </div>
+  </footer>
+</body>
+</html>
